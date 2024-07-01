@@ -17,20 +17,18 @@ public class StudentConfig {
            Student Marta = new Student(
                 "Marta",
                 "marta@nz.co",
-                LocalDate.of(2000, Month.FEBRUARY, 19),
-                34
+                LocalDate.of(2000, Month.FEBRUARY, 19)
             );
 
             Student Alex = new Student(
                 "Alex",
                 "alex@nz.co",
-                LocalDate.of(2001, Month.FEBRUARY, 3),
-                32
+                LocalDate.of(2001, Month.FEBRUARY, 3)
             );
 
-            repository.saveAll(
-                List.of(Marta, Alex)
-            );
+            // repository.saveAll(
+            //     List.of(Marta, Alex)
+            // );
         };
     }
 

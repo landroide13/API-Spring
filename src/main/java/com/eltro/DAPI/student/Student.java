@@ -1,6 +1,7 @@
 package com.eltro.DAPI.student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table
@@ -26,25 +28,25 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob;
+    
+    @Transient
     private Integer age;
 
     public Student(){
 
     }
 
-    public Student(Long id, String name, String email, LocalDate dod,  Integer age){
+    public Student(Long id, String name, String email, LocalDate dod){
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dod;
-        this.age = age;
     }
 
-    public Student( String name, String email, LocalDate dod,  Integer age){
+    public Student( String name, String email, LocalDate dod){
         this.name = name;
         this.email = email;
         this.dob = dod;
-        this.age = age;
     }
 
 
@@ -81,7 +83,7 @@ public class Student {
     }
 
     public Integer getAge(){
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age){
